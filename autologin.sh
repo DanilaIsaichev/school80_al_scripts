@@ -169,30 +169,19 @@ URL=http://paragraph.scool80.local
 done
 
 # Ярлык на Р7-оффис
-if [ ! -f /usr/share/applications/flydesktop/r7-office.desktop ]; then
-    sudo echo "[Desktop Entry]
-Name=R7-OFFICE. Professional (desktop version)
-Name[ru]=P7-Офис. Профессиональный (десктопная версия)
-GenericName=Document Editor
-GenericName[ru]=Редактор документов
-Type=Application
-Exec=/usr/bin/r7-office-desktopeditors %U
-Icon=r7-office
-Terminal=false
-" > "/usr/share/applications/flydesktop/r7-office.desktop"
+if [ -f /usr/share/applications/flydesktop/r7-office.desktop ]; then
+    sudo rm /usr/share/applications/flydesktop/r7-office.desktop
+fi
+
+if [ ! -f /usr/share/applications/flydesktop/r7-office-desktopeditors.desktop ]; then
+    sudo cp /usr/share/applications/r7-office-desktopeditors.desktop /usr/share/applications/flydesktop
 fi
 
 # Ярлык на libreoffice
-if [ ! -f /usr/share/applications/flydesktop/libreoffice.desktop ]; then
-    sudo echo "[Desktop Entry]
-Name=LibreOffice
-Name[ru]=Офис Libreoffice
-GenericName=Office
-GenericName[ru]=Офис
-Type=Application
-NoDisplay=false
-Exec=libreoffice %U
-Icon=libreoffice-startcenter
-Terminal=false
-" > "/usr/share/applications/flydesktop/libreoffice.desktop"
+if [ -f /usr/share/applications/flydesktop/libreoffice.desktop ]; then
+    sudo rm /usr/share/applications/flydesktop/libreoffice.desktop
+fi
+
+if [ ! -f /usr/share/applications/flydesktop/libreoffice-startcenter.desktop ]; then
+    sudo cp /usr/share/applications/libreoffice-startcenter.desktop /usr/share/applications/flydesktop
 fi
